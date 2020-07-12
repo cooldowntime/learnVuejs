@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <div id="app">
+          <h2>{{message}}, 李银河</h2>
+          <!-- 使用v-bind指令动态绑定属性 -->
+          <img v-bind:src="imgUrl" alt="">
+          <!-- 语法糖写法 -->
+          <a :href="aHref">百度一下</a>
+        </div>
+        
+        <script src="../js/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el: '#app', 
+                data: {
+                    message: '你好啊',
+                    imgUrl: 'https://cn.vuejs.org/images/logo.png',
+                    aHref: "http://www.baidu.com"
+                }
+            })
+        </script>
+    </body>
+</html>

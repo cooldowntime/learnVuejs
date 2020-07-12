@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <cpn></cpn>
+  </div>
+
+  <!-- 2.template标签 -->
+  <template id='cpn'>
+    <div>
+      <h2>{{title}}</h2>
+      <p>我是内容，呵呵呵</p>
+    </div>
+  </template>
+
+  <script src='../js/vue.js'></script>
+
+  <script>
+    Vue.component('cpn', {
+      template: '#cpn',
+      //组件要有自己单独的数据，注意data是一个函数
+      data(){
+        return {
+          title: 'ABC'
+        }
+      }
+    })
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      }
+    })
+  </script>
+</body>
+</html>

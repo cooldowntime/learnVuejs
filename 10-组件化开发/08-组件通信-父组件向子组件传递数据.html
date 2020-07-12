@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <!-- 通过v-bind来绑定数据 -->
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <!-- 在组件里面依然用props定义的变量 -->
+      <ul>
+        <li v-for="item in cmovies">{{item}}</li>
+      </ul>
+      <h2>{{cmessage}}</h2>
+    </div>
+  </template>
+  
+  <script src='../js/vue.js'></script>
+  <script>
+    //父传子
+    const cpn = {
+      template: '#cpn',
+      //通过props来从父组件向子组件传递数据
+      // props: ['cmovies', 'cmessage']
+      props: {
+        //props对象可以对类型做一些限制
+        cmovies: {
+          type: Array,
+          //类型是对象或数组时，默认值必须是函数
+          default(){
+            return [];
+          }
+        },
+        // cmessage: String
+        cmessage: {
+          type: String,
+          default: 'aaaa', //默认值
+          required: true //是否必传
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        movies: ['海王', '海贼王', '海尔兄弟', 'aaa']
+      },
+      components: {
+        cpn //增强写法
+      }
+    })
+  </script>
+</body>
+</html>

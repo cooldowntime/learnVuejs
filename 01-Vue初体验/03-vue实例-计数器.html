@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>当前计数：{{count}}</h2>
+        <!-- <button @click="count++">+</button>
+            <button @click="count--">-</button> -->
+        <button v-on:click="add">+</button>
+        <!-- 语法糖，简写 -->
+        <button @click="sub">-</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: { //可以是对象，可以是函数（组件）
+                count: 0
+            },
+            //methods 用于定义方法
+            methods: {
+                add: function () {
+                    console.log('add被执行');
+                    this.count++;
+                },
+                sub: function () {
+                    console.log('sub被执行');
+                    this.count--;
+                }
+            },
+            //生命周期函数
+            //hook:钩子函数
+            beforeCreate: function () {
+                console.log("beforeCreate")
+            },
+            created: function () {
+                console.log("created")
+            },
+            mounted: function () {
+                console.log("mounted")
+            }
+        })
+    </script>
+</body>
+
+</html>

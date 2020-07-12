@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <!-- 直接拼接,语法过于繁琐 -->
+    <h2>{{firstname}} {{lastname}}</h2>
+
+    <!-- 通过定义methods -->
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+
+    <!-- 通过计算属性 -->
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+  </div>
+  
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        firstname: 'kobe',
+        lastname: 'Bryant'
+      },
+      methods: {
+        getFullName: function(){
+          //打印了4次
+          console.log("methods");
+          return this.firstname + ' ' + this.lastname;
+        }
+      },
+      //进行了缓存，性能更高
+      computed: {
+        fullName: function(){
+          //打印了1次
+          console.log("computed")
+          return this.firstname + ' ' + this.lastname;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

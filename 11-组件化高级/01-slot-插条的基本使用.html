@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <cpn></cpn>
+    <cpn><span>哈哈哈</span></cpn>
+    <cpn><i>呵呵呵</i></cpn>
+    <cpn><button>按钮</button></cpn>
+    <cpn>
+      <i>hehe</i>
+      <div>我是div元素</div>
+      <p>我是p元素</p>
+    </cpn>
+  </div>
+
+  <!-- 
+    1、插条的基本使用 <slot></slot>
+    2、默认值 <slot><button>按钮</button></slot>
+    3、如果有多个元素放入组件时，会一起替换掉
+   -->
+
+  <template id="cpn">
+    <div>
+      <h2>cpn组件</h2>
+      <!-- 插条，可以指定默认值 -->
+      <slot><button>按钮</button></slot>
+    </div>
+  </template>
+  
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      },
+      components: {
+        cpn: {
+          template: '#cpn'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

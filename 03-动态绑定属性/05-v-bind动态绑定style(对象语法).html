@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <!-- 50px必须加上单引号，否则当作变量解析 -->
+    <h2 :style="{fontSize: '50px'}">{{message}}</h2>
+    <h2 :style="{fontSize: fontSize, backgroundColor: color}">{{message}}</h2>
+    <h2 :style="getStyles()">{{message}}</h2>
+  </div>
+  
+  <script src='../js/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊',
+        fontSize: '100px',
+        color: 'red'
+      },
+      methods: {
+        getStyles: function(){
+          return {fontSize: this.fontSize, backgroundColor: this.color}
+        }
+      }
+    })
+  </script>
+</body>
+</html>
